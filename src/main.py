@@ -1,12 +1,14 @@
-# TODO import from env
-
+from decouple import config
 import random
-# https://pypi.org/project/discord.py/
-import discord
+import discord # https://pypi.org/project/discord.py/
 from discord.ext import commands
 
 DISCORD_TOKEN = config('DISCORD_TOKEN')
+DATAFILE_PATH = config('DATAFILE_PATH')
+
+# TODO save list in a file
 LISTS = {}
+
 bot = commands.Bot(command_prefix='>')
 
 @bot.command(name='ping')
@@ -31,7 +33,7 @@ async def _remove(ctx, key, item):
     except:
         await ctx.send('{} not found'.format(item))
 
-# TODO command pick :list
+# command pick :list
 @bot.command(name='pick')
 async def _pick(ctx, key):
     try:
@@ -39,7 +41,7 @@ async def _pick(ctx, key):
     except:
         await ctx.send('List not found')
 
-# TODO command list :list
+# command list :list
 @bot.command(name='list')
 async def _list(ctx, key):
     try:
