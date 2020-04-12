@@ -14,7 +14,7 @@ try:
     with open(DATAFILE_PATH, "r") as f:
         LISTS = json.load(f)
 except:
-    with open("data_file.json", "w") as f:
+    with open(DATAFILE_PATH, "w") as f:
         json.dump(LISTS, f)
 
 bot = commands.Bot(command_prefix=COMMAND_PREFIX)
@@ -35,7 +35,7 @@ async def _add(ctx, list_name, *items):
     for item in items:
         if item not in LISTS[list_name]:
             LISTS[list_name].append(item)
-    with open("data_file.json", "w") as f:
+    with open(DATAFILE_PATH, "w") as f:
         json.dump(LISTS, f)
     await ctx.message.add_reaction(REACTION_EMOJI)
 
@@ -48,7 +48,7 @@ async def _remove(ctx, list_name, *items):
     except:
         pass
     finally:
-        with open("data_file.json", "w") as f:
+        with open(DATAFILE_PATH, "w") as f:
             json.dump(LISTS, f)
         await ctx.message.add_reaction(REACTION_EMOJI)
 
