@@ -68,4 +68,12 @@ async def _list(ctx, list_name):
     except:
         await ctx.send('List `{}` not found'.format(list_name))
 
+# command lists :lists
+@bot.command(name='lists', help='Display all lists')
+async def _lists(ctx):
+    try:
+        await ctx.send('\n'.join(['{}. {}'.format(i+1, x) for i,x in enumerate(LISTS.keys())]))
+    except:
+        await ctx.send('No list found')
+
 bot.run(DISCORD_TOKEN)

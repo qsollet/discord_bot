@@ -5,7 +5,7 @@ LABEL maintainer=quentin@sollet.fr
 RUN useradd --create-home --shell /bin/bash appuser
 USER appuser
 ENV PATH="/home/appuser/.local/bin:${PATH}"
-RUN mkdir /home/appuser/src && mkdir /home/appuser/static && mkdir /home/appuser/media && mkdir ~/data
+RUN mkdir /home/appuser/src && mkdir /home/appuser/static && mkdir /home/appuser/media && mkdir /home/appuser/data
 
 COPY main.py /home/appuser/src
 COPY requirements.txt /home/appuser/src
