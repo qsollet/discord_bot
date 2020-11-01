@@ -76,4 +76,12 @@ async def _lists(ctx):
     except:
         await ctx.send('No list found')
 
+# command random :item
+@bot.command(name='random', help='Pick an item randomly from a list')
+async def _random(ctx, *items):
+    try:
+        await ctx.send(random.choice(items))
+    except:
+        await ctx.send('Could not pick in items')
+
 bot.run(DISCORD_TOKEN)
